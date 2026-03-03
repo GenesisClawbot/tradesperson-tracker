@@ -17,7 +17,7 @@ const KEYS = {
 };
 
 const FREE_INVOICE_LIMIT = 3;
-const STRIPE_URL = 'https://buy.stripe.com/PLACEHOLDER';
+const STRIPE_URL = 'https://buy.stripe.com/eVq5kx8wPaBT2jRf469ws0c';
 
 function load(key) {
   try {
