@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>TradeTracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Stripe Banner -->
+  <div class="stripe-banner" id="stripeBanner">
+    <span>Unlock Full Access</span>
+    <a href="https://buy.stripe.com/PLACEHOLDER" target="_blank" class="stripe-btn">Subscribe £12/month</a>
+  </div>
+
+  <!-- Header -->
+  <header class="app-header">
+    <h1 class="app-title">TradeTracker</h1>
+  </header>
+
+  <!-- Tab Navigation -->
+  <nav class="tab-nav">
+    <button class="tab-btn active" data-tab="clients">Clients</button>
+    <button class="tab-btn" data-tab="jobs">Jobs</button>
+    <button class="tab-btn" data-tab="settings">Settings</button>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Clients Tab -->
+    <section id="tab-clients" class="tab-panel active">
+      <div class="panel-header">
+        <h2 class="panel-title">Clients</h2>
+        <button class="btn btn-primary" id="addClientBtn">+ Add Client</button>
+      </div>
+      <div id="clientsList" class="cards-list">
+        <p class="empty-state">No clients yet. Add your first one.</p>
+      </div>
+    </section>
+
+    <!-- Jobs Tab -->
+    <section id="tab-jobs" class="tab-panel">
+      <div class="panel-header">
+        <h2 class="panel-title">Jobs</h2>
+        <button class="btn btn-primary" id="addJobBtn">+ Add Job</button>
+      </div>
+      <div id="jobsList" class="cards-list">
+        <p class="empty-state">No jobs yet. Add your first one.</p>
+      </div>
+    </section>
+
+    <!-- Settings Tab -->
+    <section id="tab-settings" class="tab-panel">
+      <div class="panel-header">
+        <h2 class="panel-title">Settings</h2>
+      </div>
+      <div class="settings-form">
+        <div class="form-group">
+          <label class="form-label" for="settingBusinessName">Business Name</label>
+          <input type="text" id="settingBusinessName" class="form-input" placeholder="e.g. Joe's Plumbing">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="settingBusinessAddress">Business Address</label>
+          <textarea id="settingBusinessAddress" class="form-input form-textarea" placeholder="123 Main Street, London, SW1A 1AA" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="settingBusinessPhone">Phone</label>
+          <input type="tel" id="settingBusinessPhone" class="form-input" placeholder="07700 900123">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="settingBusinessEmail">Email</label>
+          <input type="email" id="settingBusinessEmail" class="form-input" placeholder="joe@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="settingVatNumber">VAT Number <span class="optional">(optional)</span></label>
+          <input type="text" id="settingVatNumber" class="form-input" placeholder="GB123456789">
+        </div>
+        <button class="btn btn-primary btn-full" id="saveSettingsBtn">Save Settings</button>
+        <p class="settings-saved" id="settingsSaved" style="display:none;">Saved.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal Overlay -->
+  <div class="modal-overlay" id="modalOverlay" style="display:none;">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Add Client</h3>
+        <button class="modal-close" id="modalClose">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- dynamic content -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Paywall Modal -->
+  <div class="modal-overlay" id="paywallOverlay" style="display:none;">
+    <div class="modal modal-paywall">
+      <div class="paywall-icon">🔒</div>
+      <h3 class="paywall-title">Free limit reached</h3>
+      <p class="paywall-text">You've used your 3 free invoices. Subscribe to keep generating invoices and unlock full access.</p>
+      <a href="https://buy.stripe.com/PLACEHOLDER" target="_blank" class="btn btn-primary btn-full">Subscribe £12/month</a>
+      <button class="btn btn-ghost btn-full" id="paywallClose">Maybe later</button>
+    </div>
+  </div>
+
+  <!-- Confirm Modal -->
+  <div class="modal-overlay" id="confirmOverlay" style="display:none;">
+    <div class="modal modal-confirm">
+      <h3 class="modal-title" id="confirmTitle">Delete client?</h3>
+      <p class="confirm-text" id="confirmText">This can't be undone.</p>
+      <div class="confirm-actions">
+        <button class="btn btn-ghost" id="confirmCancel">Cancel</button>
+        <button class="btn btn-danger" id="confirmOk">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- jsPDF CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
